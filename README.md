@@ -47,28 +47,28 @@ Plan your dream trip with the power of AI! This app takes your inputs — destin
 
 ### 1️⃣ Clone the Repository
 
-  git clone https://github.com/yourusername/AI-Powered-Travel-Itinerary-Planner.git
-  cd AI-Powered-Travel-Itinerary-Planner
+    git clone https://github.com/yourusername/AI-Powered-Travel-Itinerary-Planner.git
+    cd AI-Powered-Travel-Itinerary-Planner
 
 
 ### 2️⃣ Create Virtual Environment
 
-  python -m venv venv
-  venv\Scripts\activate
+    python -m venv venv
+    venv\Scripts\activate
 
 ### 3️⃣  Configure Environment Variables
 Create a .env file in the root directory:
 
-  GROQ_API_KEY=your_groq_api_key
-  SECRET_KEY=your_flask_secret_key
+    GROQ_API_KEY=your_groq_api_key
+    SECRET_KEY=your_flask_secret_key
 
 ### 5️⃣ Run the App
 
-  python app.py
+    python app.py
 
 Then open your browser and navigate to:
 
-  http://127.0.0.1:5000
+    http://127.0.0.1:5000
 
 ---
 
@@ -87,5 +87,6 @@ Then open your browser and navigate to:
 <img width="967" height="692" alt="Screenshot 2025-08-06 161235" src="https://github.com/user-attachments/assets/08f36398-62a9-42d5-9809-7594ae6e3afc" />
 
 ---
+
 
 
