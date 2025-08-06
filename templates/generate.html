@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+  <div class="card">
+    <h1 class="text-3xl font-bold mb-6 text-center">Plan Your Trip</h1>
+    
+    <form method="POST" enctype="multipart/form-data" class="space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="form-group">
+          <label for="city" class="form-label">Destination City</label>
+          <input type="text" id="city" name="city" required class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="days" class="form-label">Number of Days</label>
+          <input type="number" id="days" name="days" min="1" max="30" value="5" required class="form-control">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="interests" class="form-label">Your Interests (comma separated)</label>
+        <input type="text" id="interests" name="interests" required placeholder="e.g., museums, hiking, food" class="form-control">
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="form-group">
+          <label for="transport" class="form-label">Transportation</label>
+          <select id="transport" name="transport" required class="form-control">
+            <option value="">Select...</option>
+            <option value="Public Transport">Public Transport</option>
+            <option value="Rental Car">Rental Car</option>
+            <option value="Walking">Walking</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget" class="form-label">Budget</label>
+          <select id="budget" name="budget" required class="form-control">
+            <option value="">Select...</option>
+            <option value="Budget">Budget</option>
+            <option value="Mid-range" selected>Mid-range</option>
+            <option value="Luxury">Luxury</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="group_type" class="form-label">Travel Group</label>
+          <select id="group_type" name="group_type" required class="form-control">
+            <option value="">Select...</option>
+            <option value="Solo Traveler">Solo Traveler</option>
+            <option value="Couple">Couple</option>
+            <option value="Family">Family</option>
+            <option value="Friends">Friends</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="photos" class="form-label">Inspiration Photos (Optional)</label>
+        <input type="file" id="photos" name="photos" multiple accept="image/*" class="w-full">
+        <p class="text-sm text-gray-500 mt-1">Upload photos of places you'd like to visit</p>
+      </div>
+      
+      <div class="text-center pt-4">
+        <button type="submit" class="btn btn-primary px-8 py-3">
+          <i class="fas fa-magic mr-2"></i> Generate Itinerary
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

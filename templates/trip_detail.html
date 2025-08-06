@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold">{{ trip.city }} Trip</h1>
+    <div class="flex space-x-4">
+      <a href="{{ url_for('edit_trip', trip_id=trip_id) }}" class="btn btn-secondary">
+        <i class="fas fa-edit mr-2"></i> Edit
+      </a>
+      <a href="{{ url_for('delete_trip', trip_id=trip_id) }}" class="btn btn-primary delete-trip">
+        <i class="fas fa-trash mr-2"></i> Delete
+      </a>
+    </div>
+  </div>
+  <div class="card mb-8">
+    <div class="grid md:grid-cols-4 gap-6">
+      <div>
+        <h3 class="font-bold text-gray-500">Destination</h3>
+        <p class="text-lg">{{ trip.city }}</p>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-500">Duration</h3>
+        <p class="text-lg">{{ trip.days }} days</p>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-500">Budget</h3>
+        <p class="text-lg">{{ trip.budget }}</p>
+      </div>
+      <div>
+        <h3 class="font-bold text-gray-500">Group</h3>
+        <p class="text-lg">{{ trip.group_type }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h2 class="text-2xl font-bold mb-4">Your Itinerary</h2>
+    <div class="prose max-w-none">
+      {{ trip.itinerary|replace('\n', '<br>')|safe }}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .prose {
+    line-height: 1.8;
+  }
+  
+  .prose h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5rem 0 1rem;
+    color: var(--primary);
+  }
+  
+  .prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+</style>
+{% endblock %}

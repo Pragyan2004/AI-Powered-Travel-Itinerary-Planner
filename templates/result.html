@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+  <div class="itinerary-container">
+    <div class="itinerary-header">
+      <h1 class="text-3xl font-bold">Your {{ trip.days }}-Day Trip to {{ trip.city }}</h1>
+      <div class="flex space-x-3">
+        <button onclick="window.print()" class="btn btn-secondary">
+          <i class="fas fa-print mr-2"></i> Print
+        </button>
+        <form method="POST" action="{{ url_for('save_trip') }}" id="saveForm">
+          <button type="submit" class="btn btn-primary" id="saveBtn">
+            <i class="fas fa-save mr-2"></i> Save Trip
+          </button>
+        </form>
+      </div>
+    </div>
+
+    {% if trip.photos %}
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold mb-4">Your Inspiration</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {% for photo in trip.photos %}
+        <div class="overflow-hidden rounded-xl shadow-md">
+          <img src="{{ url_for('static', filename='uploads/' + photo) }}" alt="Trip inspiration" 
+               class="w-full h-32 md:h-48 object-cover">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="itinerary-content">
+      {{ trip.itinerary|replace('\n', '<br>')|safe }}
+    </div>
+  </div>
+
+  <div class="flex justify-center space-x-4 mt-8">
+    <a href="{{ url_for('generate_trip') }}" class="btn btn-secondary">
+      <i class="fas fa-edit mr-2"></i> Create Another
+    </a>
+    <a href="{{ url_for('my_trips') }}" class="btn btn-primary">
+      <i class="fas fa-suitcase mr-2"></i> View My Trips
+    </a>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const saveForm = document.getElementById('saveForm');
+  const saveBtn = document.getElementById('saveBtn');
+  
+  saveForm.addEventListener('submit', function(e) {
+    saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Saving...';
+    saveBtn.disabled = true;
+  });
+});
+</script>
+{% endblock %}

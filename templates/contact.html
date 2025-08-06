@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto py-12">
+  <div class="card">
+    <h1 class="text-3xl font-bold mb-6">Contact Us</h1>
+    
+    <form method="POST" class="space-y-6">
+      <div class="form-group">
+        <label for="name" class="form-label">Your Name</label>
+        <input type="text" id="name" name="name" required class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" id="email" name="email" required class="form-control">
+      </div>
+      
+      <div class="form-group">
+        <label for="message" class="form-label">Message</label>
+        <textarea id="message" name="message" rows="5" required class="form-control"></textarea>
+      </div>
+      
+      <div class="text-center pt-4">
+        <button type="submit" class="btn btn-primary px-8 py-3">
+          <i class="fas fa-paper-plane mr-2"></i> Send Message
+        </button>
+      </div>
+    </form>
+    
+    <div class="mt-12">
+      <h2 class="text-xl font-bold mb-4">Other Ways to Reach Us</h2>
+      <div class="space-y-3">
+        <p><i class="fas fa-envelope mr-2 text-primary"></i> XYZ@travelplanner.com</p>
+        <p><i class="fas fa-phone mr-2 text-primary"></i> +91 **** **** **</p>
+        <p><i class="fas fa-map-marker-alt mr-2 text-primary"></i> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, excepturi!</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title">Plan Your Perfect Trip</h1>
+    <p class="hero-subtitle">Discover amazing destinations and create personalized itineraries with our AI-powered travel planner.</p>
+    <a href="{{ url_for('generate_trip') }}" class="btn btn-primary inline-block">
+      <i class="fas fa-magic mr-2"></i> Start Planning
+    </a>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="container">
+    <h2 class="text-3xl font-bold text-center mb-12">Why Choose TravelPlanner?</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="card">
+        <div class="text-4xl mb-4 text-primary">
+          <i class="fas fa-route"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Personalized Itineraries</h3>
+        <p class="text-gray-600">Get customized travel plans tailored to your preferences, budget, and travel style.</p>
+      </div>
+      <div class="card">
+        <div class="text-4xl mb-4 text-primary">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">AI-Powered Suggestions</h3>
+        <p class="text-gray-600">Our advanced AI recommends hidden gems and local favorites you won't find in guidebooks.</p>
+      </div>
+      <div class="card">
+        <div class="text-4xl mb-4 text-primary">
+          <i class="fas fa-images"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Visual Inspiration</h3>
+        <p class="text-gray-600">Browse beautiful photos and get inspired for your next adventure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

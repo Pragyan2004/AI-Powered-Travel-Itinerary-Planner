@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+  <div class="card">
+    <h1 class="text-3xl font-bold mb-6 text-center">Edit Trip to {{ trip.city }}</h1>
+    
+    <form method="POST" class="space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="form-group">
+          <label for="city" class="form-label">Destination City</label>
+          <input type="text" id="city" name="city" value="{{ trip.city }}" required class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="days" class="form-label">Number of Days</label>
+          <input type="number" id="days" name="days" min="1" max="30" value="{{ trip.days }}" required class="form-control">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="interests" class="form-label">Your Interests</label>
+        <input type="text" id="interests" name="interests" value="{{ trip.interests|join(', ') }}" required class="form-control">
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="form-group">
+          <label for="transport" class="form-label">Transportation</label>
+          <select id="transport" name="transport" required class="form-control">
+            <option value="Public Transport" {% if trip.transport == 'Public Transport' %}selected{% endif %}>Public Transport</option>
+            <option value="Rental Car" {% if trip.transport == 'Rental Car' %}selected{% endif %}>Rental Car</option>
+            <option value="Walking" {% if trip.transport == 'Walking' %}selected{% endif %}>Walking</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="budget" class="form-label">Budget</label>
+          <select id="budget" name="budget" required class="form-control">
+            <option value="Budget" {% if trip.budget == 'Budget' %}selected{% endif %}>Budget</option>
+            <option value="Mid-range" {% if trip.budget == 'Mid-range' %}selected{% endif %}>Mid-range</option>
+            <option value="Luxury" {% if trip.budget == 'Luxury' %}selected{% endif %}>Luxury</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="group_type" class="form-label">Travel Group</label>
+          <select id="group_type" name="group_type" required class="form-control">
+            <option value="Solo Traveler" {% if trip.group_type == 'Solo Traveler' %}selected{% endif %}>Solo Traveler</option>
+            <option value="Couple" {% if trip.group_type == 'Couple' %}selected{% endif %}>Couple</option>
+            <option value="Family" {% if trip.group_type == 'Family' %}selected{% endif %}>Family</option>
+            <option value="Friends" {% if trip.group_type == 'Friends' %}selected{% endif %}>Friends</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="flex justify-end space-x-4 pt-4">
+        <a href="{{ url_for('view_trip', trip_id=trip_id) }}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
