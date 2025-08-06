@@ -47,12 +47,12 @@ Plan your dream trip with the power of AI! This app takes your inputs — destin
 
 ### 1️⃣ Clone the Repository
 
-```bash
   git clone https://github.com/yourusername/AI-Powered-Travel-Itinerary-Planner.git
   cd AI-Powered-Travel-Itinerary-Planner
 
+
 ### 2️⃣ Create Virtual Environment
-```bash
+
   python -m venv venv
   venv\Scripts\activate
 
@@ -63,7 +63,6 @@ Create a .env file in the root directory:
   SECRET_KEY=your_flask_secret_key
 
 ### 5️⃣ Run the App
-```bash
 
   python app.py
 
@@ -88,4 +87,5 @@ Then open your browser and navigate to:
 <img width="967" height="692" alt="Screenshot 2025-08-06 161235" src="https://github.com/user-attachments/assets/08f36398-62a9-42d5-9809-7594ae6e3afc" />
 
 ---
+
 
