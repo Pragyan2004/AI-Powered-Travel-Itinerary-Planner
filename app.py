@@ -7,10 +7,11 @@ from werkzeug.utils import secure_filename
 import uuid
 from datetime import datetime
 
-load_dotenv()
+load_dotenv(override=True)
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-SECRET_KEY = os.getenv("SECRET_KEY", os.urandom(24))
+SECRET_KEY = os.getenv("SECRET_KEY", "default_secret_key")
 
+print(f"DEBUG: GROQ_API_KEY loaded: {GROQ_API_KEY[:10] if GROQ_API_KEY else 'None'}...")
 print("🔐 Loaded GROQ_API_KEY:", "Yes" if GROQ_API_KEY else "No")
 
 app = Flask(__name__)
@@ -38,7 +39,7 @@ app.jinja_env.filters['datetimeformat'] = datetimeformat
 llm = ChatGroq(
     temperature=0.3,
     groq_api_key=GROQ_API_KEY,
-    model_name="llama3-70b-8192"
+    model_name="llama-3.3-70b-versatile"
 )
 
 itinerary_prompt = ChatPromptTemplate.from_messages([

@@ -10,46 +10,106 @@
   {% block extra_css %}{% endblock %}
 </head>
 <body>
-<div class="nav-links">
-  <a href="{{ url_for('home') }}" class="{% if active == 'home' %}active{% endif %}">Home</a>
-  <a href="{{ url_for('about') }}" class="{% if active == 'about' %}active{% endif %}">About</a>
-  <a href="{{ url_for('generate_trip') }}" class="{% if active == 'generate' %}active{% endif %}">Plan Trip</a>
-  <a href="{{ url_for('my_trips') }}" class="{% if active == 'trips' %}active{% endif %}">My Trips</a>
-  <a href="{{ url_for('contact') }}" class="{% if active == 'contact' %}active{% endif %}">Contact</a>
-</div>
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="{{ url_for('home') }}" class="logo">
+          <i class="fas fa-plane-departure logo-icon"></i>
+          <span>TravelPlanner</span>
+        </a>
+        
+        <ul class="nav-links" id="navLinks">
+          <li class="nav-item">
+            <a href="{{ url_for('home') }}" class="nav-link {% if active == 'home' %}active{% endif %}">
+              <i class="fas fa-home nav-icon"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('generate_trip') }}" class="nav-link {% if active == 'generate' %}active{% endif %}">
+              <i class="fas fa-magic nav-icon"></i> Plan Trip
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('my_trips') }}" class="nav-link {% if active == 'trips' %}active{% endif %}">
+              <i class="fas fa-briefcase nav-icon"></i> My Trips
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('about') }}" class="nav-link {% if active == 'about' %}active{% endif %}">
+              <i class="fas fa-info-circle nav-icon"></i> About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('contact') }}" class="nav-link {% if active == 'contact' %}active{% endif %}">
+              <i class="fas fa-envelope nav-icon"></i> Contact
+            </a>
+          </li>
+        </ul>
 
+        <div class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      <div class="container">
+  <div class="flash-messages">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
         {% for category, message in messages %}
-          <div class="alert alert-{{ category }} p-4 rounded-lg mb-4">
-            {{ message }}
+          <div class="flash-message {{ category }}">
+            <span>{{ message }}</span>
+            <button class="flash-close">&times;</button>
           </div>
         {% endfor %}
-      </div>
-    {% endif %}
-  {% endwith %}
+      {% endif %}
+    {% endwith %}
+  </div>
 
-  <main class="container py-8">
-    {% block content %}{% endblock %}
-  </main>
-  <footer class="bg-white py-8 mt-12">
+  <main class="content-wrapper">
     <div class="container">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <h3 class="text-xl font-bold text-primary">TravelPlanner</h3>
-          <p class="text-gray-600">Your perfect travel companion</p>
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <a href="{{ url_for('home') }}" class="footer-logo">
+            <i class="fas fa-plane-departure logo-icon"></i>
+            <span>TravelPlanner</span>
+          </a>
+          <p>Your AI-powered travel assistant for personalized itineraries and unforgettable journeys.</p>
         </div>
-        <div class="flex space-x-6">
-          <a href="#" class="text-gray-600 hover:text-primary transition"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-gray-600 hover:text-primary transition"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="text-gray-600 hover:text-primary transition"><i class="fab fa-instagram"></i></a>
+        <div>
+          <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="{{ url_for('home') }}" class="footer-link">Home</a></li>
+            <li><a href="{{ url_for('generate_trip') }}" class="footer-link">Plan a Trip</a></li>
+            <li><a href="{{ url_for('my_trips') }}" class="footer-link">My Trips</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Support</h4>
+          <ul class="footer-links">
+            <li><a href="{{ url_for('about') }}" class="footer-link">About Us</a></li>
+            <li><a href="{{ url_for('contact') }}" class="footer-link">Contact</a></li>
+            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Follow Us</h4>
+          <div style="display: flex; gap: 1rem;">
+            <a href="#" class="footer-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="footer-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-link"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
       </div>
-      <div class="border-t border-gray-200 mt-8 pt-6 text-center text-gray-500">
-        <p>&copy; 2025 TravelPlanner. All rights reserved.</p>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TravelPlanner. Crafted with ❤️ for travelers.</p>
       </div>
     </div>
   </footer>
